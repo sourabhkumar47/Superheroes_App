@@ -1,5 +1,6 @@
 package com.example.superheroes
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,10 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,17 +41,24 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Superhero() {
-    LazyColumn(
-        modifier = Modifier
-            .padding(
-                end = 16.dp,
-                start = 16.dp
-            )
+    Scaffold(
+        topBar = {
+            SuperheroAppBar()
+        }
     ) {
-        items(heroes) {
-            SuperheroItem(hero = it)
+        LazyColumn(
+            modifier = Modifier
+                .padding(
+                    end = 16.dp,
+                    start = 16.dp
+                )
+        ) {
+            items(heroes) {
+                SuperheroItem(hero = it)
+            }
         }
     }
 }
@@ -62,10 +67,11 @@ fun Superhero() {
 fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
 
     Card(
-        Modifier
+        modifier = modifier
             .padding(
-                top = 8.dp,
-                bottom = 8.dp,
+                8.dp
+//                top = 8.dp,
+//                bottom = 8.dp,
 //                end = 16.dp,
 //                start = 16.dp
             ),
@@ -87,6 +93,11 @@ fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
     }
 }
 
+
+fun SuperheroAppBar() {
+
+}
+
 @Composable
 fun HeroInformation(@StringRes heroName: Int, heroDescription: Int) {
     Column() {
@@ -106,7 +117,7 @@ fun HeroImage(heroImage: Int) {
     Box(
         modifier = Modifier
             .size(72.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(8.dp)),
     ) {
         Image(
             painter = painterResource(heroImage),
