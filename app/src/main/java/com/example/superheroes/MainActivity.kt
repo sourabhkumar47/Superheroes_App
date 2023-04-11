@@ -94,8 +94,19 @@ fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
 }
 
 
-fun SuperheroAppBar() {
-
+@Composable
+fun SuperheroAppBar(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .size(56.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.h1
+        )
+    }
 }
 
 @Composable
