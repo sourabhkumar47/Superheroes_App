@@ -14,6 +14,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -69,7 +70,7 @@ fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
                 start = 16.dp
             )
             .clip(RoundedCornerShape(16.dp))
-            .height(72.dp),
+            .height(84.dp),
         elevation = 2.dp
     ) {
         Row(
@@ -78,7 +79,8 @@ fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
                 .fillMaxSize()
         ) {
             HeroInformation(hero.nameRes, hero.descriptionRes)
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.weight(1f))
+            Spacer(modifier = Modifier.width(16.dp))
             HeroImage(hero.imageRes)
         }
     }
