@@ -5,18 +5,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,7 +44,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Superhero() {
-    LazyColumn() {
+    LazyColumn(
+        modifier = Modifier
+            .padding(
+                end = 16.dp,
+                start = 16.dp
+            )
+    ) {
         items(heroes) {
             SuperheroItem(hero = it)
         }
@@ -54,13 +60,25 @@ fun Superhero() {
 @Composable
 fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
 
-    Card() {
+    Card(
+        modifier = Modifier
+            .padding(
+                top = 16.dp,
+                bottom = 16.dp,
+                end = 16.dp,
+                start = 16.dp
+            )
+            .clip(RoundedCornerShape(16.dp))
+            .height(72.dp),
+        elevation = 2.dp
+    ) {
         Row(
             modifier = Modifier
                 .padding(8.dp)
-                .fillMaxSize(),
+                .fillMaxSize()
         ) {
             HeroInformation(hero.nameRes, hero.descriptionRes)
+            Spacer(Modifier.width(8.dp))
             HeroImage(hero.imageRes)
         }
     }
@@ -69,14 +87,29 @@ fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
 @Composable
 fun HeroInformation(@StringRes heroName: Int, heroDescription: Int) {
     Column() {
-        Text(text = stringResource(heroName))
-        Text(text = stringResource(heroDescription))
+        Text(
+            text = stringResource(heroName),
+            style = MaterialTheme.typography.h3
+        )
+        Text(
+            text = stringResource(heroDescription),
+            style = MaterialTheme.typography.body1
+        )
     }
 }
 
 @Composable
 fun HeroImage(heroImage: Int) {
-    Image(painter = painterResource(heroImage), contentDescription = null)
+    Image(
+        modifier = Modifier
+            .clip(RoundedCornerShape(8.dp))
+            .size(84.dp),
+        contentScale =ContentScale.Crop,
+        painter = painterResource(heroImage),
+        contentDescription = null,
+
+
+        )
 }
 
 @Preview(showBackground = true)
