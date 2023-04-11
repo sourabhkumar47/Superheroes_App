@@ -62,25 +62,26 @@ fun Superhero() {
 fun SuperheroItem(hero: Hero, modifier: Modifier = Modifier) {
 
     Card(
-        modifier = Modifier
+        Modifier
             .padding(
-                top = 16.dp,
-                bottom = 16.dp,
-                end = 16.dp,
-                start = 16.dp
-            )
-            .clip(RoundedCornerShape(16.dp))
-            .height(84.dp),
+                top = 8.dp,
+                bottom = 8.dp,
+//                end = 16.dp,
+//                start = 16.dp
+            ),
+//            .clip(RoundedCornerShape(16.dp))
+//            .height(84.dp),
         elevation = 2.dp
     ) {
         Row(
             modifier = Modifier
-                .padding(8.dp)
+                .padding(16.dp)
                 .fillMaxSize()
+                .sizeIn(minHeight = 72.dp)
         ) {
             HeroInformation(hero.nameRes, hero.descriptionRes)
             Spacer(Modifier.weight(1f))
-            Spacer(modifier = Modifier.width(16.dp))
+//            Spacer(Modifier.width(16.dp))
             HeroImage(hero.imageRes)
         }
     }
@@ -102,16 +103,18 @@ fun HeroInformation(@StringRes heroName: Int, heroDescription: Int) {
 
 @Composable
 fun HeroImage(heroImage: Int) {
-    Image(
+    Box(
         modifier = Modifier
+            .size(72.dp)
             .clip(RoundedCornerShape(8.dp))
-            .size(84.dp),
-        contentScale =ContentScale.Crop,
-        painter = painterResource(heroImage),
-        contentDescription = null,
-
-
+    ) {
+        Image(
+            painter = painterResource(heroImage),
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            alignment = Alignment.TopCenter
         )
+    }
 }
 
 @Preview(showBackground = true)
