@@ -57,7 +57,11 @@ fun Superhero() {
                 )
         ) {
             items(heroes) {
-                SuperheroItem(hero = it)
+                SuperheroItem(
+//                    modifier = Modifier
+//                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    hero = it
+                )
             }
         }
     }
@@ -110,12 +114,16 @@ fun SuperheroAppBar(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun HeroInformation(@StringRes heroName: Int, heroDescription: Int) {
-    Column() {
+fun HeroInformation(
+    @StringRes heroName: Int,
+    heroDescription: Int
+) {
+    Column(
+        modifier = Modifier.width(200.dp)
+    ) {
         Text(
             text = stringResource(heroName),
-            style = MaterialTheme.typography.h3,
-            color = MaterialTheme.colors.secondary
+            style = MaterialTheme.typography.h3
 
         )
         Text(
@@ -135,8 +143,8 @@ fun HeroImage(heroImage: Int) {
         Image(
             painter = painterResource(heroImage),
             contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            alignment = Alignment.TopCenter
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.Center
         )
     }
 }

@@ -1,5 +1,6 @@
 package com.example.superheroes.ui.theme
 
+import android.graphics.Paint.Style
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -12,11 +13,15 @@ val Cabin = FontFamily(
     Font(R.font.cabin_regular, FontWeight.Normal),
     Font(R.font.cabin_bold, FontWeight.Bold)
 )
+val courgette = FontFamily(
+    Font(R.font.courgette_regular, FontWeight.Bold)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     defaultFontFamily = Cabin,
     h1 = TextStyle(
+        fontFamily = courgette,
         fontWeight = FontWeight.Normal,
         fontSize = 30.sp
     ),
