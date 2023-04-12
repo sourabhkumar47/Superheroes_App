@@ -114,7 +114,9 @@ fun HeroInformation(@StringRes heroName: Int, heroDescription: Int) {
     Column() {
         Text(
             text = stringResource(heroName),
-            style = MaterialTheme.typography.h3
+            style = MaterialTheme.typography.h3,
+            color = MaterialTheme.colors.secondary
+
         )
         Text(
             text = stringResource(heroDescription),
