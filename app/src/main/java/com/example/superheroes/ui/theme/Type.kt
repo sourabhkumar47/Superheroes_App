@@ -1,6 +1,5 @@
 package com.example.superheroes.ui.theme
 
-import android.graphics.Paint.Style
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -35,12 +34,12 @@ val Typography = Typography(
     ),
     h3 = TextStyle(
         fontFamily = lobster,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Medium,
         fontSize = 20.sp
     ),
     body1 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 18.sp
     )
     /* Other default text styles to override
     button = TextStyle(
