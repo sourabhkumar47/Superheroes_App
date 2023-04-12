@@ -144,7 +144,7 @@ fun HeroImage(heroImage: Int) {
         Image(
             painter = painterResource(heroImage),
             contentDescription = null,
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.Crop,
             alignment = Alignment.Center
         )
     }
