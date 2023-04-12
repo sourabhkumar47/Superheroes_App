@@ -17,6 +17,10 @@ val courgette = FontFamily(
     Font(R.font.courgette_regular, FontWeight.Bold)
 )
 
+val lobster = FontFamily(
+    Font(R.font.lobster_regular, FontWeight.Medium)
+)
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     defaultFontFamily = Cabin,
@@ -30,6 +34,7 @@ val Typography = Typography(
         fontSize = 20.sp
     ),
     h3 = TextStyle(
+        fontFamily = lobster,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp
     ),

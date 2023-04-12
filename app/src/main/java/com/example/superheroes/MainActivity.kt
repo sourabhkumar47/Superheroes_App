@@ -119,7 +119,8 @@ fun HeroInformation(
     heroDescription: Int
 ) {
     Column(
-        modifier = Modifier.width(225.dp)
+        modifier = Modifier.width(225.dp),
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(heroName),
