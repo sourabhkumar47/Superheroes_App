@@ -49,6 +49,7 @@ fun Superhero() {
             SuperheroAppBar()
         }
     ) {
+
         LazyColumn(
             modifier = Modifier
                 .padding(
