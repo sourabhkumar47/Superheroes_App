@@ -10,6 +10,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.Spring.DampingRatioHighBouncy
+import androidx.compose.animation.core.Spring.DampingRatioLowBouncy
 import androidx.compose.animation.core.Spring.StiffnessVeryLow
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
@@ -72,7 +73,7 @@ fun Superhero() {
         AnimatedVisibility(
             visibleState = visibleState,
             enter = fadeIn(
-                animationSpec = spring(dampingRatio = DampingRatioHighBouncy)
+                animationSpec = spring(dampingRatio = DampingRatioLowBouncy)
             ),
             exit = fadeOut()
         ) {
