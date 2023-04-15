@@ -5,6 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.Spring.DampingRatioHighBouncy
+import androidx.compose.animation.core.Spring.StiffnessVeryLow
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,6 +22,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,6 +52,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Superhero() {
@@ -49,20 +61,43 @@ fun Superhero() {
             SuperheroAppBar()
         }
     ) {
+        val visibleState = remember {
+            MutableTransitionState(false).apply {
+                //start animation immediately
+                targetState = true
+            }
+        }
 
-        LazyColumn(
-            modifier = Modifier
-                .padding(
-                    end = 16.dp,
-                    start = 16.dp
-                )
+        //Fade in entry animation for entire list
+        AnimatedVisibility(
+            visibleState = visibleState,
+            enter = fadeIn(
+                animationSpec = spring(dampingRatio = DampingRatioHighBouncy)
+            ),
+            exit = fadeOut()
         ) {
-            items(heroes) {
-                SuperheroItem(
+            LazyColumn(
+                modifier = Modifier
+                    .padding(
+                        end = 16.dp,
+                        start = 16.dp
+                    )
+                    .animateEnterExit(
+                        enter = slideInVertically(
+                            animationSpec = spring(
+                                stiffness = StiffnessVeryLow,
+                                dampingRatio = DampingRatioHighBouncy
+                            )
+                        )
+                    )
+            ) {
+                items(heroes) {
+                    SuperheroItem(
 //                    modifier = Modifier
 //                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    hero = it
-                )
+                        hero = it
+                    )
+                }
             }
         }
     }
