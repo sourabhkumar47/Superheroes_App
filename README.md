@@ -6,8 +6,8 @@ With animated list.
 Screenshots
 ==================================
 <div style="display:flex;">
-<img alt="App image" src="ScreenShot/Screenshot_20230410_220535.png" width="30%">
-<img alt="App image" src="ScreenShot/Screen_Recording_20230411_005856_Woof_AdobeExpress.gif" width="30%">
+<img alt="App image" src="Screenshots/1.jpg" width="30%">
+<img alt="App image" src="ScreenShot/Screen_Recording_20230416_005647_Superheroes_AdobeExpress.gif" width="30%">
 </div>
 
 Through implementing a real-world design, I learned about
@@ -16,11 +16,17 @@ Pre-requisites
 --------------
 
 -modifiers,
+
 -alignments,
+
 -scrolling,
--Theming
--Shapes
--Card
+
+-Theming,
+
+-Shapes,
+
+-Card,
+
 -Lazy Column
 
 Getting Started
