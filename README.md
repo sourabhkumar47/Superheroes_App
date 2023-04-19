@@ -13,11 +13,17 @@ Screenshots
 Pre-requisites
 --------------
 -modifiers,
+
 -alignments,
+
 -scrolling,
+
 -Theming,
+
 -Shapes,
+
 -Card,
+
 -Lazy Column
 
 Getting Started
